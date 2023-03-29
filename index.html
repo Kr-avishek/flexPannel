@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex: 1;
+            align-items:center ;
+            justify-content: center;
+        }
+        .box{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+            text-align: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition:
+                      font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                      flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                     background 0.2s;
+        }
+        .container1{
+    background-image: url(https://images.unsplash.com/photo-1679855315528-106bb5cea34e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80);
+}
+.container2{
+    background-image:url("https://images.unsplash.com/photo-1618772446265-3f9f8e6f8487?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80");
+}.container3{
+    background-image: url("https://images.unsplash.com/photo-1547453155-ae5be9428a4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1854&q=80");
+}.container4{
+    background-image:url(https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80);
+}.container5{
+    background-image: url(https://images.unsplash.com/photo-1547452377-437ffe6f6cf7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1940&q=80);
+}
+.box>*{
+    margin: 0;
+    width: 100%;
+  transition:transform 0.5s;
+  color:rgb(247, 247, 247);
+  font-size: 2rem;
+  font-weight: 600;
+  flex:1 0 auto;
+  justify-content:center;
+  align-items:center;
+  display:flex;
+}
+.box >  *:first-child {transform:translateY(-100%);}
+.box.open-active> *:first-child {transform:translateY(0);}
+.box > *:last-child {transform:translateY(100%);}
+.box.open-active> *:last-child {transform:translateY(0);}
+.box.open{
+    font-size: 30px;
+    flex:5;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box container1">
+            <p>Let's</p>
+            <p>make</p>
+            <p>Peace</p>
+        </div>
+        <div class="box container2">
+            <p>Let's</p>
+            <p>Breath</p>
+            <p>Calm</p>
+        </div>
+        <div class="box container3">
+            <p>Just</p>
+            <p>Do</p>
+            <p>It</p>
+        </div>
+        <div class="box container4">
+            <p>Take</p>
+            <p>It</p>
+            <p>Easy</p>
+        </div>
+        <div class="box container5">
+            <p>Prove</p>
+            <p>Your</p>
+            <p>Worth</p>
+        </div>
+    </div>
+    <script>
+       const boxContainer = document.querySelectorAll('.box');
+       function toggleOpen(){
+           this.classList.toggle('open');
+       };
+       function txn(e){
+        console.log(e.propertyName)
+        if(e.propertyName==='flex-grow'){
+           this.classList.toggle('open-active');
+        }
+       };
+       boxContainer.forEach((elm)=>{
+        elm.addEventListener('click',toggleOpen);
+       });
+       boxContainer.forEach((elm)=>{
+        elm.addEventListener('transitionend',txn)
+       })
+    </script>
+</body>
+</html>
